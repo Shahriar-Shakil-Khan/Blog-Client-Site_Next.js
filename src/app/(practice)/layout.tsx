@@ -1,24 +1,40 @@
-import Link from 'next/link'
-export default function AnalyticsLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <div>
+import Link from "next/link";
 
-            <nav className="flex gap-10 m-8">
+export default function PracticeLayout({
+  children,
+  marketingSlot,
+  salesSlot,
+}: {
+  children: React.ReactNode;
+  marketingSlot: React.ReactNode;
+  salesSlot: React.ReactNode;
+}) {
+  return (
+    <div>
+      <nav className="flex gap-10 m-8">
+        <Link className="hover:underline" href="/development">
+          Development
+        </Link>
+        <Link className="hover:underline" href="/testing">
+          Testing
+        </Link>
+        <Link className="hover:underline" href="/marketing">
+          Marketing
+        </Link>
+        <Link className="hover:underline" href="/marketing/settings">
+          Settings
+        </Link>
+        <Link className="hover:underline" href="/sales">
+          Sales
+        </Link>
+      </nav>
 
-                <Link className="hover:underline" href="/development">Development</Link>
+      <div className="flex">
+        {marketingSlot}
+        {salesSlot}
+      </div>
 
-
-                <Link className="hover:underline" href="/marketing">Marketing</Link>
-
-
-                <Link className="hover:underline" href="/marketing/settings">Settings</Link>
-
-                <Link className="hover:underline" href="/sales">Sales</Link>
-
-            </nav>
-
-            {children}
-            
-        </div>
-    )
+      {children}
+    </div>
+  );
 }
